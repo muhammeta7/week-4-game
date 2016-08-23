@@ -24,89 +24,53 @@
 		</div>
 	</div>
 
-	<!-- Battle Winner -->
-	
-
-
 
 	<!-- Battle Stage -->
-	<div class="jumbotron" id = "battleSTage">
-  	<h1>Battle Stage</h1>
-		<div class = "row" id = "secondRow">
-			<div class = "col-lg-5">
+	
+		<div class = "row" id="row1">
+			<div class = "col-lg-4">
+			Attacker Side
 			</div>
-			<div class = "col-lg-2">Versus</div>
-			<div class = "col-lg-5">
-
+			<div class = "col-lg-4"><h1>Battle Grounds</h1></div>
+			<div class = "col-lg-4">
+			Defender Side
 			</div>		
 		</div>
-	</div>
-
-	<!--Character Selection  -->
-	<div class = "row" id = "thirdRow">
-		
-		<div class = "col-lg-3">
-		<button class="btn btn-default btn-lg JonSnow"><span class="glyphicon"><img src="assets/images/jonsnow.jpg" alt="JonSnow" id="characterSelect"></span></button>
-		</div>
-		
-		<div class = "col-lg-3" id="versus">
-			<button class="btn btn-primary btn-lg TheMountain"><span class="glyphicon"></span><img src="assets/images/the-mountain.jpg" alt="The-Mountain" id="characterSelect"></button>
-		</div>
-		
-		<div class = "col-lg-3">
-			<button class="btn btn-danger btn-lg Khaleesi"><span class="glyphicon"></span><img src="assets/images/khaleesi.jpg" alt="Khaleesi" id="characterSelect"></button>
-		</div>
-		
-		<div class = "col-lg-3">
-			<button class="btn btn-danger btn-lg Brienne"><span class="glyphicon"><img src="assets/images/brienne.jpg" alt="brienne" id="characterSelect"></span></button>
-		</div>
-
-	</div>
-					    
-					    
 	
-	<!-- <div class = "row" id = "secondRow">
-            {<div class = "col-md-3">
-            </div>
-            <div class = "col-md-2 cont">
-                <img src="#" class="image">
-            </div>
-            <div class = "col-md-2">
-                <div class = "row" id = "sub">
-                    <div class = "col-md-3">
-                    </div>
-                    <div class = "col-md-6" id = "attack">
-                        <button class = "attack">Attack</button>
-                    </div>
-                    <div class = "col-md-3">
-                    </div>
-                </div>
-            </div>
-            <div class = "col-md-2 cont">
-                <img src="#" class="image">
-            </div>
-            <div class = "col-md-3">
-            </div>}
-     </div> -->
 
- <!-- <div class = "row" id = "third">
-            <div class = "col-md-5">
-            </div>
-            <div class = "col-md-2" id = "newGame">
-                <button class = "newGame">New Game</button>
-            </div>
-            <div class = "col-md-5">
-            </div>
- </div> -->
-
-
-
-
+		<div class = "row" id = "battleStage">
+			<div class = "col-lg-5" id = "attacker">
+			</div>
+			<div class = "col-lg-2"><button id="attack">Attack</button></div>
+			<div class = "col-lg-5" id="enemy">
+			</div>		
+		</div>
 
 	
-	<script>
 
 
-	</script>
+
+		<!--Character List -->
+	<div class = "row" id="charList">
+		<h1>Select a character</h1>
+		<div class = "col-lg-3 stats" id="jonSnow" value = "250">
+			<button class="btn btn-primary chracterList"><span class="glyphicon"><img src="assets/images/jonsnow.jpg" alt="JonSnow"></span><p id="jonSnowHp">250</p></button>
+		</div>
+		<div class = "col-lg-3 stats" id="mountain" value = "150">
+			<button class="btn btn-default chracterList"><span class="glyphicon"><img src="assets/images/the-mountain.jpg" alt="theMountain"></span><p id="mountainHp">150</p></button>
+		</div>
+		<div class = "col-lg-3 stats" id="khaleesi" value = "220">
+			<button class="btn btn-danger chracterList"><span class="glyphicon"><img src="assets/images/khaleesi.jpg" alt="khaleesi"></span><p id="khaleesiHp">220</p></button>
+		</div>
+		<div class = "col-lg-3 stats" id = "brienne" value = "190">
+			<button class="btn btn-info characterList"><span class="glyphicon"><img src="assets/images/brienne.jpg" alt="Brienne"></span><p id="breinneHp">190</p></button>
+		</div>
+
+	</div>
+
+						   	
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="assets/javascript/game.js"></script>
+
 </body>
 </html>
