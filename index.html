@@ -24,35 +24,9 @@
 		</div>
 	</div>
 
-
-	<!-- Battle Stage -->
-	
-		<div class = "row" id="row1">
-			<div class = "col-lg-4">
-			Attacker Side
-			</div>
-			<div class = "col-lg-4"><h1>Battle Grounds</h1></div>
-			<div class = "col-lg-4">
-			Defender Side
-			</div>		
-		</div>
-	
-
-		<div class = "row" id = "battleStage">
-			<div class = "col-lg-5" id = "attacker">
-			</div>
-			<div class = "col-lg-2"><button id="attack">Attack</button></div>
-			<div class = "col-lg-5" id="enemy">
-			</div>		
-		</div>
-
-	
-
-
-
-		<!--Character List -->
+	<!--Character List -->
 	<div class = "row" id="charList">
-		<h1>Select a character</h1>
+		<h1>Character Selection</h1>
 		<div class = "col-lg-3 stats" id="jonSnow" value = "250">
 			<button class="btn btn-primary chracterList"><span class="glyphicon"><img src="assets/images/jonsnow.jpg" alt="JonSnow"></span><p id="jonSnowHp">250</p></button>
 		</div>
@@ -68,6 +42,44 @@
 
 	</div>
 
+	<!-- Battle Stage -->
+	
+	<div class = "row" id="row1">
+		<div class = "col-lg-12"><h1>Battle Grounds</h1></div>
+	</div>
+	
+
+	<div class = "row">
+		<div class = "col-lg-12"></div>
+	</div>
+	
+	<div class = "row">
+		<div class = "col-lg-12"><p id= "battleMessage">Battle Message: <p></div>
+	</div>
+
+	
+
+	<div class = "row" id = "battleStage">
+		<div class = "col-lg-3" id = "attacker">
+		</div>
+		<div class = "col-lg-3"><button id="attack">Attack</button></div>
+		<div class = "col-lg-3" id = "defender">
+		</div>
+		<div class = "col-lg-3" id="enemy">
+		</div>		
+	</div>
+
+	<div class = "row" id="row2">
+		<div class = "col-lg-4">
+		Attacker Side
+		</div>
+		<div class = "col-lg-4">
+		Defender Side
+		</div>
+		<div class = "col-lg-4">
+		Enemy List
+		</div>		
+	</div>
 						   	
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 	<script type="text/javascript" src="assets/javascript/game.js"></script>

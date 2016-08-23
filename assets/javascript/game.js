@@ -23,7 +23,7 @@ var jonSnow = {
 	healthPoints: 250
 };
 var theMountain = {
-	alias: "The Mountain",
+	alias: "The Mountain" ,
 	baseAttack: 25,
 	counterAttack: 10,
 	message: "Roar",
@@ -53,8 +53,10 @@ $(document).ready(function(){
 
 	$(".stats").on("click", function(){
 		if (charSelected == false){
-			// $('.comment').remove()
-			// Move all characters to defend side
+
+			$('.comment').remove()
+
+			// Move all characters to enemy side
 			$('#jonSnow').appendTo(enemy).addClass("enemyStats");
 			$('#mountain').appendTo(enemy).addClass("enemyStats");
 			$('#khaleesi').appendTo(enemy).addClass("enemyStats");
@@ -70,6 +72,7 @@ $(document).ready(function(){
 			if (yourCharacter == 'jonSnow'){
 				yourBaseAttack = jonSnow.baseAttack;
 			}
+			console.log(yourBaseAttack);
 			if (yourCharacter == 'mountain'){
 				yourBaseAttack = theMountain.baseAttack;
 			}
@@ -88,13 +91,14 @@ $(document).ready(function(){
 	$(".stats").on("click", function(){
 		if((this).id != yourCharacter && enemySelected == false) {
 			// Move enemy to defend area
-			$(this).appendTo("#enemy").removeClass('enemyStats').addClass('defenderStats');
+			$(this).appendTo('#defender').removeClass('enemyStats').addClass('defenderStats');
 			// Collect id of enemy and it't attributes
 			yourEnemy = this.id;
 			enemyHealth = $(this).attr('value');
 			console.log(enemySelected);
 		}
-		// $('.comment').remove()
+
+		$('.comment').remove()
 		enemySelected = true;
 		readyAttack = true;
 		return;
@@ -119,36 +123,57 @@ $(document).ready(function(){
 				if (yourEnemy == 'brienne'){
 					enemyAttack = brienne.counterAttack;
 				}
-
 				// Battle logic
 				yourHealth = yourHealth - enemyAttack;
 				enemyHealth = enemyHealth - yourAttack;
-
+				
 				// Change enemy health on-screen
-
 				if (yourEnemy == 'jonSnow'){
 					$('#jonSnowHp').html(enemyHealth);
 					enemyName = "Jon Snow";
 				}
-				if (yourEnemy == 'jonSnow'){
+				if (yourEnemy == 'mountain'){
 					$('#mountainHp').html(enemyHealth);
-					enemyName = "Jon Snow";
+					enemyName = "The Mountain";
 				}
-				if (yourEnemy == 'jonSnow'){
+				if (yourEnemy == 'khaleesi'){
 					$('#khaleesiHp').html(enemyHealth);
-					enemyName = "Jon Snow";
+					enemyName = "Khaleesi";
 				}
-				if (yourEnemy == 'jonSnow'){
+				if (yourEnemy == 'brienne'){
 					$('#brienneHp').html(enemyHealth);
-					enemyName = "Jon Snow";
+					enemyName = "Brienne";
 				}
 
+				// Change your player health on-screen
+				if (yourCharacter == 'jonSnow'){
+					$('#jonSnowHp').html(yourHealth);
+				}
+				if (yourCharacter == 'mountain'){
+					$('#mountainHp').html(yourHealth);
+				}
+				if (yourCharacter == 'khaleesi'){
+					$('#khaleesiHp').html(yourHealth);
+				}
+				if (yourCharacter == 'brienne'){
+					$('#brienneHp').html(yourHealth);
+				}
+
+				// Display battle messages
+				$('#battleMessage')
+
+			}
+			// Your player loses scenario
+			if (yourHealth <= 0){
 
 			}
 
+		
+
+
 		}
 
-
+		
 
 
 
@@ -157,4 +182,4 @@ $(document).ready(function(){
 	
 
 
-})
+});
