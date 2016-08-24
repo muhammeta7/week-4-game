@@ -10,7 +10,7 @@ var deathToll = 0;
 var yourHealth;
 var enemyHealth;
 // Attack Variables
-var yourAttack;
+var yourAttack=0;
 var yourBaseAttack;
 // Enemy Counter Attacks
 var enemyAttack;
@@ -19,29 +19,25 @@ var jonSnow = {
 	alias: "Jon Snow",
 	baseAttack: 20,
 	counterAttack: 25,
-	message: "The King in the North",
-	healthPoints: 250
+	healthPoints: 400
 };
 var theMountain = {
-	alias: "The Mountain" ,
+	alias: "The Mountain",
 	baseAttack: 25,
 	counterAttack: 10,
-	message: "Roar",
-	healthPoints: 180
+	healthPoints: 300
 };
 var khaleesi = {
 	alias: "Khaleesi",
 	baseAttack: 20,
 	counterAttack: 25,
-	message: "The Mother of Dragons",
-	healthPoints: 220
+	healthPoints: 375
 };
 var brienne = {
 	alias: "Brienne of Tarth",
 	baseAttack: 25,
 	counterAttack: 15,
-	message: "Brienne of Tarth for the W!",
-	healthPoints: 200
+	healthPoints: 350
 };
 
 
@@ -66,20 +62,21 @@ $(document).ready(function(){
 			// Collect id of your character and it's attributes
 			yourCharacter = this.id;
 			yourHealth = $(this).attr('value');
+			$('#heading').empty();
 			console.log(yourHealth);
 
 			// Set base attacks
 			if (yourCharacter == 'jonSnow'){
-				yourBaseAttack = jonSnow.baseAttack;
+				yourAttack = jonSnow.baseAttack;
 			}
 			if (yourCharacter == 'mountain'){
-				yourBaseAttack = theMountain.baseAttack;
+				yourAttack = theMountain.baseAttack;
 			}
 			if (yourCharacter == 'khaleesi'){
-				yourBaseAttack = khaleesi.baseAttack;
+				yourAttack = khaleesi.baseAttack;
 			}
 			if (yourCharacter == 'brienne'){
-				yourBaseAttack = brienne.baseAttack;
+				yourAttack = brienne.baseAttack;
 			}
 			charSelected = true;
 			return;
@@ -111,7 +108,7 @@ $(document).ready(function(){
 			// Are you and the defender both alive
 			if( yourHealth > 0 && enemyHealth >0){
 				// Increment your attack
-				yourAttack += parseInt(yourBaseAttack);
+				yourAttack += yourAttack;
 				console.log(yourAttack)
 				if (yourEnemy == 'jonSnow'){
 				enemyAttack = jonSnow.counterAttack;
@@ -171,8 +168,8 @@ $(document).ready(function(){
 			if (yourHealth <= 0){
 				$('.comment').remove();
 				// Display message for loser
-				$('#battle').append("<p>Valor Morghulis. Better luck next time!</p>");
-				$('#battle').append("<button id= 'restart'>Restart Game</button>");
+				$('#battleMessage').append("<p>Valor Morghulis. Better luck next time!</p>");
+				$('#battleMessage').append("<button id= 'restart'>Restart Game</button>");
 					// Restart page after loss
 					$('#restart').on("click", function(){
 						location.reload();
@@ -190,19 +187,19 @@ $(document).ready(function(){
 				// Remove dead body from screen
 				if(yourEnemy == 'jonSnow'){
 					$('#jonSnow').addClass('removeBody');
-					enemyName = "John Snow"
+					enemyName = "John Snow";
 				}
 				if(yourEnemy == 'mountain'){
 					$('#mountain').addClass('removeBody');
-					enemyName = "The Mountain"
+					enemyName = "The Mountain";
 				}
 				if(yourEnemy == 'khaleesi'){
 					$('#khaleesi').addClass('removeBody');
-					enemyName = "Khaleesi"
+					enemyName = "Khaleesi";
 				}
 				if(yourEnemy == 'brienne'){
 					$('#brienne').addClass('removeBody');
-					enemyName = "Breinne of Tarth"
+					enemyName = "Breinne of Tarth";
 				}
 				// Check to see if all enemies have died
 				if(deathToll<3){
@@ -216,7 +213,7 @@ $(document).ready(function(){
 				else{
 					$('.comment').remove();
 					$('#battleMessage').append("<p class = 'comment'>You have won the King's Tourney! You are truly a great warrior!</p>");
-					$('#battleMessage').append("<button id= 'tryAgain'>Try Again</button>")
+					$('#battleMessage').append("<button id= 'tryAgain'>Slay Again</button>")
 						$('#tryAgain').on("click", function(){
 							location.reload();
 						});
