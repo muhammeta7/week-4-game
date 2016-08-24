@@ -5,7 +5,7 @@ var enemySelected = false;
 var enemyName;
 var yourEnemy;
 var readyAttack = false;
-var killCount = 0;
+var deathToll = 0;
 // Global variables for character attributes
 var yourHealth;
 var enemyHealth;
@@ -162,29 +162,83 @@ $(document).ready(function(){
 				if (yourCharacter == 'brienne'){
 					$('#brienneHp').html(yourHealth);
 				}
-
 				// Display battle messages
-				$('#battleMessage').append("<p class = 'commented'>You attacked " + enemyName + " and caused " + yourAttack +" damage. </p>");
-				$('#battleMessage').append("<p class = 'commented'>" + enemyName + " counter attacked and caused you " + enemyAttack +" damage. </p>");
-
+				$('#battleMessage').append("<p class = 'comment'>You attacked " + enemyName + " and caused " + yourAttack +" damage. </p>");
+				$('#battleMessage').append("<p class = 'comment'>" + enemyName + " counter attacked and caused you " + enemyAttack +" damage. </p>");
 			}
+
 			// Your player loses scenario
 			if (yourHealth <= 0){
-
+				$('.comment').remove();
+				// Display message for loser
+				$('#battle').append("<p>Valor Morghulis. Better luck next time!</p>");
+				$('#battle').append("<button id= 'restart'>Restart Game</button>");
+					// Restart page after loss
+					$('#restart').on("click", function(){
+						location.reload();
+					});
+				// Change global variables and return
+				readyAttack = false;
+				return;
 			}
 
-		
+			// Your player wins scenario
+			if (enemyHealth <= 0){
+				// Increment death count
+				deathToll += 1;
+				$('.comment').remove()
+				// Remove dead body from screen
+				if(yourEnemy == 'jonSnow'){
+					$('#jonSnow').addClass('removeBody');
+					enemyName = "John Snow"
+				}
+				if(yourEnemy == 'mountain'){
+					$('#mountain').addClass('removeBody');
+					enemyName = "The Mountain"
+				}
+				if(yourEnemy == 'khaleesi'){
+					$('#khaleesi').addClass('removeBody');
+					enemyName = "Khaleesi"
+				}
+				if(yourEnemy == 'brienne'){
+					$('#brienne').addClass('removeBody');
+					enemyName = "Breinne of Tarth"
+				}
+				// Check to see if all enemies have died
+				if(deathToll<3){
+					// Ask player to choose another challenger
+					$('#battleMessage').append("<p class = 'comment'> You have killed " + enemyName + "! Select another enemy to battle.  </p>");
+					// Change global variables and return
+					readyAttack = false;
+					enemySelected = false;
+					return;
+				}
+				else{
+					$('.comment').remove();
+					$('#battleMessage').append("<p class = 'comment'>You have won the King's Tourney! You are truly a great warrior!</p>");
+					$('#battleMessage').append("<button id= 'tryAgain'>Try Again</button>")
+						$('#tryAgain').on("click", function(){
+							location.reload();
+						});
+						// Change global variables and return
+						readyAttack = false;
+						return;
+					}
+				}
+			}
 
+		// No character selected
+		else if(charSelected == false){
+			$('.comment').remove();
+			$('#tryAgain').remove();
+			$('#battleMessage').append("<p class = comment>No player has been selected. Quit twiddling those thumbs and choose your character!</p>");
 
 		}
-
-		
-
-
-
+		// No enemy was selected
+		else if( enemySelected == false){
+			$('.comment').remove();
+			$('#tryAgain').remove();
+			$('#battleMessage').append("<p class = comment>You scared to fight? Select an enemy to fight.</p>");
+		}
 	});
-
-	
-
-
 });
