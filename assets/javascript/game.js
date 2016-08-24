@@ -57,22 +57,21 @@ $(document).ready(function(){
 			$('.comment').remove()
 
 			// Move all characters to enemy side
-			$('#jonSnow').appendTo(enemy).addClass("enemyStats");
-			$('#mountain').appendTo(enemy).addClass("enemyStats");
-			$('#khaleesi').appendTo(enemy).addClass("enemyStats");
-			$('#brienne').appendTo(enemy).addClass("enemyStats");
+			$('#jonSnow').appendTo("#enemy").addClass("enemyList");
+			$('#mountain').appendTo("#enemy").addClass("enemyList");
+			$('#khaleesi').appendTo("#enemy").addClass("enemyList");
+			$('#brienne').appendTo("#enemy").addClass("enemyList");
 			// Move selected character to attack div
 			$(this).removeClass("enemyStats").addClass("yourStats").appendTo("#attacker")
 			// Collect id of your character and it's attributes
 			yourCharacter = this.id;
 			yourHealth = $(this).attr('value');
-			// console.log(yourHealth);
+			console.log(yourHealth);
 
 			// Set base attacks
 			if (yourCharacter == 'jonSnow'){
 				yourBaseAttack = jonSnow.baseAttack;
 			}
-			console.log(yourBaseAttack);
 			if (yourCharacter == 'mountain'){
 				yourBaseAttack = theMountain.baseAttack;
 			}
@@ -87,17 +86,19 @@ $(document).ready(function(){
 		}	
 	});
 	
+
+	
 	// Move selected enemy to Defender Div
 	$(".stats").on("click", function(){
-		if((this).id != yourCharacter && enemySelected == false) {
+		if((this).id != yourCharacter && enemySelected == true) {
 			// Move enemy to defend area
-			$(this).appendTo('#defender').removeClass('enemyStats').addClass('defenderStats');
+			$(this).appendTo('#defender').removeClass("enemyList").addClass("defenderStats");
 			// Collect id of enemy and it't attributes
 			yourEnemy = this.id;
 			enemyHealth = $(this).attr('value');
-			console.log(enemySelected);
+			console.log(enemyHealth);
 		}
-
+		// $(document).off('click','.enemyStats'); 
 		$('.comment').remove()
 		enemySelected = true;
 		readyAttack = true;
@@ -110,7 +111,8 @@ $(document).ready(function(){
 			// Are you and the defender both alive
 			if( yourHealth > 0 && enemyHealth >0){
 				// Increment your attack
-				yourAttack += yourBaseAttack;
+				yourAttack += parseInt(yourBaseAttack);
+				console.log(yourAttack)
 				if (yourEnemy == 'jonSnow'){
 				enemyAttack = jonSnow.counterAttack;
 				}
@@ -135,6 +137,7 @@ $(document).ready(function(){
 				if (yourEnemy == 'mountain'){
 					$('#mountainHp').html(enemyHealth);
 					enemyName = "The Mountain";
+					console.log(enemyHealth)
 				}
 				if (yourEnemy == 'khaleesi'){
 					$('#khaleesiHp').html(enemyHealth);
@@ -148,6 +151,7 @@ $(document).ready(function(){
 				// Change your player health on-screen
 				if (yourCharacter == 'jonSnow'){
 					$('#jonSnowHp').html(yourHealth);
+					console.log(yourHealth)
 				}
 				if (yourCharacter == 'mountain'){
 					$('#mountainHp').html(yourHealth);
@@ -160,7 +164,8 @@ $(document).ready(function(){
 				}
 
 				// Display battle messages
-				$('#battleMessage')
+				$('#battleMessage').append("<p class = 'commented'>You attacked " + enemyName + " and caused " + yourAttack +" damage. </p>");
+				$('#battleMessage').append("<p class = 'commented'>" + enemyName + " counter attacked and caused you " + enemyAttack +" damage. </p>");
 
 			}
 			// Your player loses scenario

@@ -15,6 +15,20 @@
 }
 
 
+#charList h1{
+	font-family: 'Merienda', cursive;
+	font-size: 28px;
+	border-bottom: 2px solid blue;
+	color: black;
+}
+
+#charList h3{
+	font-family: 'Merienda', cursive;
+	font-size: 20px;
+	color: black;
+}
+
+
 #battleStage{
 	padding-bottom: 20px;
 	border: 3px solid black;
@@ -26,9 +40,17 @@
 
 
 #charList{
-	height: 300px;
+	height: 25%;
 	text-align: center;
+	color: white;
 }
+
+#charList p{
+	text-align: center;
+	clear: both;
+	color: black;
+}
+
 
 #row1{
 	text-align: center;
@@ -45,13 +67,21 @@
 	position: relative;
 	top: 250px;
 	left: 120px;
+	border: 1px solid black;
+	color: blue;
+	padding: 10px 20px;
 }
 
-img{
-	height: 200px;
-	width: 200px;
+img {
+	height: 250px;
+	width: 250px;
 	padding: 15px;
 	float: left;
+}
+
+h3 {
+	text-align: left;
+	color: blue;
 }
 
 @media screen and (min-width: 768px)
@@ -82,8 +112,7 @@ img{
 .jumbotron .h1, .jumbotron h1 {
     font-size: 44px;
 }
-.jumbotron .h1, .jumbotron h1 {
+/*.jumbotron .h1, .jumbotron h1 {
     color: inherit;
-}
-.h1, h1 {
-    font-size: 24px;
+}*/
+
